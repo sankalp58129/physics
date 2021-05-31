@@ -2,31 +2,26 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 
-var engine,world,ground,ball;
+var engine,world,ground1,box1,box2,pig1,log1;
 
 function setup() {
-  createCanvas(800,400);
+  createCanvas(1200,400);
   engine = Engine.create();
   world = engine.world;
-  var option1 = {
-    restitution:1.0
-  }
-  var option = {
-    isStatic:true
-  }
-  ground = Bodies.rectangle(200,390,500,10,option);
-  World.add(world,ground);
+  ground1 = new ground(600,height,1200,20);
+  box1 = new box(700,320,70,70);
+  box2 = new box(910,320,70,70);
+  pig1 = new pig(810,350);
+  log1 = new log(810,260,300,PI);
   
-  ball = Bodies.circle(200,100,20,option1);
-  World.add(world,ball);
 }
   function draw(){
     background("black");
     Engine.update(engine);
-    rectMode(CENTER);
-    rect(ground.position.x,ground.position.y,500,10);
-
-    ellipseMode(RADIUS);
-    ellipse(ball.position.x,ball.position.y,20,20);
+    ground1.display();
+    box1.display();
+    box2.display();
+    pig1.display();
+    log1.display();
   }  
   
